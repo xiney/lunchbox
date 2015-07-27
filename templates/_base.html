@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lunchbox</title>
+
+    <!-- META TAGS -->
+    {% include '_meta.html' %}
+
+    <!-- FONTS -->
+    {% include '_fonts.html' %}
+
+    <!-- CSS -->
+    {{ CSS.push('less/app.less') }}
+    {{ CSS.render('css/app.min.css') }}
+    {% block extra_css %}{% endblock extra_css %}
+
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+<body class="{{ id|lower }}">
+    <a class="sr-only" href="#content">Skip To Content</a>
+
+    {% block outer_content %}
+
+    {% block header_content %}
+    <header>
+        <div class="nav-links">
+            <a href="../quotable/index.html" {% if name == 'Quotable' %} class="active" {% endif %}>Quotable</a>
+            <a href="../factlist/index.html" {% if name == 'Factlist' %} class="active" {% endif %}>Factlist</a>
+            <a href="../waterbug/index.html" {% if name == 'Waterbug' %} class="active" {% endif %}>Waterbug</a>
+        </div>
+
+        <a href="../index.html" class="home-link">
+            <h1>Lunchbox</h1>
+        </a>
+    </header>
+    {% endblock header_content %}
+
+    <section id="content">
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock content %}
+            {% block wide_content %}
+            {% endblock wide_content %}
+        </div>
+    </section>
+
+    {% endblock outer_content %}
+
+    {% block jquery %}
+    {% endblock jquery %}
+    {{ JS.push('js/lib/underscore.js') }}
+    {{ JS.push('js/lib/modernizr.js') }}
+    {{ JS.push('js/app_config.js') }}
+    {{ JS.push('js/app.js') }}
+    {{ JS.render('js/app-footer.min.js') }}
+
+    {% block extra_foot_js %}{% endblock extra_foot_js %}
+
+    {% block extra_foot %}
+    {% endblock extra_foot %}
+</body>
+</html>

@@ -1,0 +1,304 @@
+@import "less/lib/bootstrap/bootstrap";
+@import "less/lib/font-awesome/font-awesome";
+@import "less/lib/prefixer";
+@import "less/variables";
+
+.wrapper {
+    padding: @grid-gutter-width;
+
+    @media screen  and (min-width: 960px){
+        position: absolute;
+        top: 87px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+    }
+}
+
+.controls {
+    @media screen and (min-width: 960px){
+        position: absolute;
+        left: 640px + @grid-gutter-width;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 30px;
+        overflow: scroll;
+    }
+}
+    
+.controls-wrapper { 
+    padding-top: 0;
+
+    input[type="file"] {
+        font-family: @font-family;
+        font-size: @font-size-small;
+        color: @gray-light;
+    }
+
+    .btn-primary:disabled { pointer-events: auto; }
+
+    .form-group {
+        > label { font-size: @font-size-small; }
+    
+        .help {
+            color: @gray-light;
+            font-size: 13px;
+
+            .has-error& {
+                color: @brand-danger;
+            }
+        }
+
+        .required {
+            display: none;
+            color: #aaa;
+
+            .required&,
+            &.is-visible {
+                display: inline;
+            }
+        }
+    }
+
+    .guidelines {
+        padding-left: 18px;
+        font-size: 14px;
+
+        li { margin-bottom: @line-height-computed / 4; }
+    }
+
+    .help-text {
+        font-family: @font-family;
+        color: @gray-light;
+        font-size: 14px;
+    }
+
+    .nav-pills {
+        font-weight: normal;
+        font-family: @condensed-font-family;
+        font-size: @font-size-small;
+        letter-spacing: 0.05rem;
+        
+        .disabled { padding: 4px 15px 6px 0; }
+        
+        > li > a {
+            padding: 6px 15px 4px;
+            text-transform: none;
+            font-family: @font-family;
+            -webkit-font-smoothing: antialiased;
+            color: #4669ae;
+            font-size: 13px;
+        }
+
+        > li.active > a {
+            color: #fff;
+            background-color: #4669ae !important;
+        }
+    }
+
+    .radio-inline {
+        font-family: @font-family;
+        text-transform: none;
+        font-size: @font-size-small;
+        letter-spacing: 0;
+    }
+
+    .sample-credit {
+        font-size: 12px;
+        font-family: @condensed-font-family;
+        text-transform: uppercase;
+        letter-spacing: 0.05rem;
+        color: @gray-light;
+    }
+}
+
+
+#imageCanvas {
+    .transform-origin(top left);
+
+    &.is-draggable {
+        cursor: ns-resize;
+
+        &.shallow {
+            cursor: ew-resize;
+        }
+    }
+}
+
+.canvas-cell {
+    width: 320px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+
+    @media screen and (min-width: 700px){
+        width: 640px;
+        height: 400px;
+    }
+
+    @media screen and (min-width: 960px){
+        height: auto;
+    }
+}
+
+.drag-help {
+    position: absolute;
+    top: 370px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-family: @condensed-font-family;
+    color: @gray-light;
+
+    @media screen and (max-width: 699px){
+        top: 185px;
+        width: 100%;
+        padding-left: @grid-gutter-width;
+    }
+}
+
+.canvas-wrapper {
+    width: auto;
+    margin: 0 -@grid-gutter-width @line-height-computed;
+
+    @media screen and (min-width: 960px){
+        width: 640px;
+        margin: 0;
+    }
+}
+
+
+// Fileinput.less
+// CSS for file upload button and fileinput widget
+// ------------------------------------------------
+
+.btn-file {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+
+    > input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        font-size: 23px;
+        height: 100%;
+        width: 100%;
+        direction: ltr;
+        cursor: pointer;
+    }
+}
+
+.fileinput {
+    display: inline-block;
+
+    .form-control {
+        padding-top: 7px;
+        padding-bottom: 5px;
+        display: table-cell;
+        margin-bottom: 0px;
+        vertical-align: middle;
+        cursor: text;
+        white-space: nowrap;
+    }
+    .thumbnail {
+        overflow: hidden;
+        display: inline-block;
+        margin-bottom: 5px;
+        vertical-align: middle;
+        text-align: center;
+
+        > img { max-height: 100%; }
+    }
+    .btn { vertical-align: middle; }
+}
+
+.fileinput-exists .fileinput-new,
+.fileinput-new .fileinput-exists {
+    display: none;
+}
+
+.help {
+    visibility: hidden;
+
+    .has-file &,
+    .has-error & {
+        visibility: visible;
+    }
+}
+
+.fileinput-inline .fileinput-controls {
+    display: inline;
+}
+
+.fileinput-filename, 
+.custom-filename {
+     display: inline-block;
+     overflow: hidden;
+     vertical-align: middle;
+     /* new lines */
+     width: 100%;
+     position: absolute;
+     left: 0;
+     padding-left: 30px;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     top: 0;
+     line-height: 36px;
+}
+
+.fileinput-exists .fileinput-filename { display: none; }
+
+.fileinput-new .custom-filename { display: none; }
+
+.form-control .fileinput-filename { vertical-align: bottom; }
+
+.fileinput.input-group {
+    display: table;
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+    > .btn-file {
+        z-index: 1;
+    }
+
+    // Input group fixes
+    .input-group-addon:not(:first-child) {
+        border-left: 0;
+    }
+}
+
+// Not 100% correct, but helps in typical use case
+.fileinput-new.input-group .btn-file,
+.fileinput-new .input-group .btn-file {
+    border-radius: 0 @border-radius-base @border-radius-base 0;
+
+    &.btn-xs,
+    &.btn-sm {
+        border-radius: 0 @border-radius-small @border-radius-small 0;
+    }
+    &.btn-lg {
+        border-radius: 0 @border-radius-large @border-radius-large 0;
+    }
+}
+
+.form-group.has-warning .fileinput {
+    .fileinput-preview { color: @state-warning-text; }
+    .thumbnail { border-color: @state-warning-border; }
+}
+.form-group.has-error .fileinput {
+    .fileinput-preview { color: @state-danger-text; }
+    .thumbnail { border-color: @state-danger-border; }
+}
+.form-group.has-success .fileinput {
+    .fileinput-preview { color: @state-success-text; }
+    .thumbnail { border-color: @state-success-border; }
+}
